@@ -74,6 +74,10 @@ module.exports = {
         priority: 0.7,
         alternateRefs: [
           {
+            href: `${config.siteUrl}/${staticPaths[0].paths[i]}`,
+            hreflang: staticPaths[0].locale,
+          },
+          {
             href: `${config.siteUrl}/${staticPaths[1].paths[i]}`,
             hreflang: staticPaths[1].locale,
           },

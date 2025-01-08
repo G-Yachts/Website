@@ -1,11 +1,8 @@
 FROM node:20-alpine as base
-label authors="g-yachts"
-
-FROM base as builder
 
 WORKDIR /home/node/app
 
-# Install necessary packages for Puppeteer in runtime image
+# Install necessary packages for Puppeteer in both builder and runtime stages
 RUN apk add --no-cache \
     udev \
     ttf-freefont \
@@ -13,32 +10,27 @@ RUN apk add --no-cache \
 
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
+FROM base as builder
+
 COPY package*.json ./
+RUN npm install
 
 COPY . .
-RUN yarn install
-RUN yarn build
+RUN npm run build
 
 FROM base as runtime
 
 ENV NODE_ENV=production
 ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
 
-# Install necessary packages for Puppeteer in runtime image
-RUN apk add --no-cache \
-    udev \
-    ttf-freefont \
-    chromium
-
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
 WORKDIR /home/node/app
-COPY package*.json  ./
 
-RUN yarn install --production
+COPY package*.json ./
+RUN npm install --only=production
+
 COPY --from=builder /home/node/app/dist ./dist
 COPY --from=builder /home/node/app/build ./build
 
 EXPOSE 3000
 
-CMD ["yarn", "serve"]
+CMD ["npm", "start"]
