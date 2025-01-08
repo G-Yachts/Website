@@ -1,5 +1,5 @@
 FROM node:20-alpine as base
-label authors="g-yachts"
+LABEL authors="g-yachts"
 
 FROM base as builder
 

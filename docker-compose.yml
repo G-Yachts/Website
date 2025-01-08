@@ -19,7 +19,7 @@ services:
       - gYachts
 
   web:
-    image: ghcr.io/${GITHUB_OWNER}/g-yachts-web:${GITHUB_SHA}
+    image: ghcr.io/g-yachts/g-yachts-web:${GITHUB_SHA}
     restart: unless-stopped
     container_name: web
     environment:
@@ -39,7 +39,7 @@ services:
       - .env
   
   admin:
-    image: ghcr.io/${GITHUB_OWNER}/g-yachts-admin:${GITHUB_SHA}
+    image: ghcr.io/g-yachts/g-yachts-admin:${GITHUB_SHA}
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"

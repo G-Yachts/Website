@@ -391,37 +391,37 @@ export const fetchSitemap = async () => {
         query Sitemap {
           Articles(limit: 0) {
             docs {
-              id
+              slug
               updatedAt
             }
           }
           Yachts(limit: 0) {
             docs {
-              id
+              slug
               updatedAt
             }
           }
           Charters(limit: 0) {
             docs {
-              id
+              slug
               updatedAt
             }
           }
           NewConstructions(limit: 0) {
             docs {
-              id
+              slug
               updatedAt
             }
           }
           Destinations(limit: 0) {
             docs {
-              id
+              slug
               updatedAt
             }
           }
           Events(limit: 0) {
             docs {
-              id
+              slug
               updatedAt
             }
           }

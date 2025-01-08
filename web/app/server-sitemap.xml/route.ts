@@ -2,6 +2,7 @@ import { getServerSideSitemap, ISitemapField } from "next-sitemap";
 import { fetchSitemap } from "@/actions/actions";
 import IDoc from "@/types/server-sitemap";
 
+/*
 export const GET = async (request: Request) => {
   const data = await fetchSitemap(),
     URLs: ISitemapField[] = [];
@@ -9,20 +10,24 @@ export const GET = async (request: Request) => {
   const addURLs = (category: string, basePath: { en: string; fr: string }) => {
     data[category].docs.forEach((doc: IDoc) => {
       URLs.push({
-        loc: `https://www.g-yachts.com/${basePath.en}/${doc.id}`,
+        loc: `https://www.g-yachts.com/${basePath.en}/${doc.slug}`,
         lastmod: doc.updatedAt,
         priority: 0.8,
         alternateRefs: [
           {
-            href: `https://www.g-yachts.com/${basePath.fr}/${doc.id}`,
-            hreflang: "fr",
-          },
-          {
-            href: `https://www.g-yachts.com/en/${basePath.en}/${doc.id}`,
+            href: `https://www.g-yachts.com/${basePath.en}/${doc.slug}`,
             hreflang: "en",
           },
           {
-            href: `https://www.g-yachts.com/fr/${basePath.fr}/${doc.id}`,
+            href: `https://www.g-yachts.com/${basePath.fr}/${doc.slug}`,
+            hreflang: "fr",
+          },
+          {
+            href: `https://www.g-yachts.com/en/${basePath.en}/${doc.slug}`,
+            hreflang: "en",
+          },
+          {
+            href: `https://www.g-yachts.com/fr/${basePath.fr}/${doc.slug}`,
             hreflang: "fr",
           },
         ],
@@ -42,3 +47,4 @@ export const GET = async (request: Request) => {
 
   return getServerSideSitemap(URLs);
 };
+*/

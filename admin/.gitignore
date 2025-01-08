@@ -7,4 +7,3 @@ node_modules
 .next
 .vercel
 package-lock.json
-yarn.lock
