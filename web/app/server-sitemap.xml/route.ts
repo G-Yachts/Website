@@ -2,7 +2,6 @@ import { getServerSideSitemap, ISitemapField } from "next-sitemap";
 import { fetchSitemap } from "@/actions/actions";
 import IDoc from "@/types/server-sitemap";
 
-/*
 export const GET = async (request: Request) => {
   const data = await fetchSitemap(),
     URLs: ISitemapField[] = [];
@@ -47,4 +46,3 @@ export const GET = async (request: Request) => {
 
   return getServerSideSitemap(URLs);
 };
-*/

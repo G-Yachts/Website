@@ -59,7 +59,6 @@ jobs:
             sudo rm -rf .env
             sudo docker rmi $(sudo docker images)
             echo "GITHUB_SHA=${{ github.sha }}" > .env
-            echo "GITHUB_OWNER=${{github.repository_owner}}" >> .env
             echo "MONGO_URI=mongodb://${{secrets.SERVER_IP}}:27017" >> .env
             echo "MONGO_USER=${{secrets.MONGO_USER}}" >> .env
             echo "MONGO_PASS=${{secrets.MONGO_PASS}}" >> .env
