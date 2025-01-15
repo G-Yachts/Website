@@ -505,6 +505,9 @@ export interface User {
   indexField?: number | null;
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
@@ -1008,6 +1011,7 @@ export interface Yacht {
   id: string;
   name: string;
   slug?: string | null;
+  displayOnWebsite?: boolean | null;
   model?: string | null;
   price: number;
   LOA: number;
@@ -1065,7 +1069,6 @@ export interface Yacht {
       | null;
   };
   description?: string | null;
-  brochure?: (string | null) | Media;
   clicks?: number | null;
   seo?:
     | {
@@ -1086,6 +1089,7 @@ export interface Charter {
   id: string;
   name: string;
   slug?: string | null;
+  displayOnWebsite?: boolean | null;
   model?: string | null;
   price?: {
     low?: number | null;
@@ -1146,7 +1150,6 @@ export interface Charter {
       | null;
   };
   description?: string | null;
-  brochure?: (string | null) | Media;
   clicks?: number | null;
   seo?:
     | {
@@ -1373,6 +1376,7 @@ export interface NewConstruction {
   delivery: string;
   name: string;
   slug?: string | null;
+  displayOnWebsite?: boolean | null;
   model?: string | null;
   price: number;
   LOA: number;
@@ -1430,7 +1434,6 @@ export interface NewConstruction {
       | null;
   };
   description?: string | null;
-  brochure?: (string | null) | Media;
   clicks?: number | null;
   seo?:
     | {

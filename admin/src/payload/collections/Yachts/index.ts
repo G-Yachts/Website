@@ -42,13 +42,6 @@ export const Yachts: CollectionConfig = {
       },
     },
   },
-  /*hooks: {
-    afterChange: [
-      ({ doc, operation }) =>
-        mountSlug({ name: doc.name, id: doc.id, operation, collection: 'yachts' }),
-    ],
-    afterDelete: [({ doc, req }) => deleteBrochureHook({ doc, req })],
-  },*/
   versions: false,
   access: {
     read: anyone,

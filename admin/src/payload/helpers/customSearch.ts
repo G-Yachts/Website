@@ -78,7 +78,7 @@ const searchCollection = async (
         },
       },
       {
-        _id: 1,
+        slug: 1,
         [queryField]: 1,
       },
       {
@@ -99,7 +99,7 @@ const searchCollection = async (
           },
         },
         {
-          _id: 1,
+          slug: 1,
           [queryField]: 1,
         },
       )
@@ -128,12 +128,12 @@ const searchCollection = async (
   const finalResult = sortedResult.map(item => {
     if (subQueryField) {
       return {
-        id: item._id,
+        slug: item.slug,
         [topQueryField]: item[topQueryField][subQueryField],
       }
     }
     return {
-      id: item._id,
+      slug: item.slug,
       [topQueryField]: item[topQueryField],
     }
   })

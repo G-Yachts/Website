@@ -25,6 +25,15 @@ export const yachtsAndCharterCommonFields = (type: 'charter' | 'yacht'): Field[]
     },
   },
   {
+    type: 'checkbox',
+    name: 'displayOnWebsite',
+    label: {
+      en: 'Display on website',
+      fr: 'Afficher sur le site web',
+    },
+    defaultValue: true,
+  },
+  {
     label: {
       en: 'Model',
       fr: 'Modèle',

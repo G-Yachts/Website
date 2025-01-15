@@ -10,8 +10,7 @@ import { searchAll } from "@/actions/search";
 import { IDestination } from "@/types/destination";
 import { IArticle } from "@/types/article";
 import { Link } from "@/navigation";
-import { IYacht } from "@/types/sale";
-import { ICharter } from "@/types/yacht";
+import { ISale, ICharter } from "@/types/yacht";
 
 const Search = () => {
   const t = useTranslations("search");
@@ -21,7 +20,7 @@ const Search = () => {
   const locale = params.locale as string;
   const [results, setResults] = useState<
     | {
-        yachts: IYacht[];
+        yachts: ISale[];
         charters: ICharter[];
         destinations: IDestination[];
         articles: IArticle[];
@@ -82,7 +81,7 @@ const Search = () => {
   );
 };
 
-const YachtsResults = ({ yachts }: { yachts: IYacht[] }) => {
+const YachtsResults = ({ yachts }: { yachts: ISale[] }) => {
   const t = useTranslations("search");
   const { openView } = useViewContext();
   return (
@@ -92,10 +91,10 @@ const YachtsResults = ({ yachts }: { yachts: IYacht[] }) => {
         <Link
           onClick={() => openView(null)}
           href={{
-            pathname: "/sales/[id]",
-            params: { id: yacht.id },
+            pathname: "/sales/[slug]",
+            params: { slug: yacht.slug },
           }}
-          key={yacht.id}
+          key={yacht.slug}
           className="w-full flex flex-col py-2 px-4 border-2 border-rock-300 hover:bg-rock-200 transition-colors duration-200 cursor-pointer mt-2"
         >
           <span>{yacht.name}</span>
@@ -119,10 +118,10 @@ const ChartersResults = ({ charters }: { charters: ICharter[] }) => {
         <Link
           onClick={() => openView(null)}
           href={{
-            pathname: "/charters/[id]",
-            params: { id: charter.id },
+            pathname: "/charters/[slug]",
+            params: { slug: charter.slug },
           }}
-          key={charter.id}
+          key={charter.slug}
           className="w-full flex flex-col py-2 px-4 border-2 border-rock-300 hover:bg-rock-200 transition-colors duration-200 cursor-pointer mt-2"
         >
           <span>{charter.name}</span>
@@ -150,10 +149,10 @@ const DestinationsResults = ({
         <Link
           onClick={() => openView(null)}
           href={{
-            pathname: "/destinations/[id]",
-            params: { id: destination.id },
+            pathname: "/destinations/[slug]",
+            params: { slug: destination.slug },
           }}
-          key={destination.id}
+          key={destination.slug}
           className="w-full flex flex-col py-2 px-4 border-2 border-rock-300 hover:bg-rock-200 transition-colors duration-200 cursor-pointer mt-2"
         >
           <span>{destination.destination}</span>
@@ -183,10 +182,10 @@ const ArticlesResults = ({
         <Link
           onClick={() => openView(null)}
           href={{
-            pathname: "/news/[id]",
-            params: { id: article.id },
+            pathname: "/news/[slug]",
+            params: { slug: article.slug },
           }}
-          key={article.id}
+          key={article.slug}
           className="w-full flex flex-col py-2 px-4 border-2 border-rock-300 hover:bg-rock-200 transition-colors duration-200 cursor-pointer mt-2"
         >
           <span>{article.title}</span>

@@ -46,7 +46,7 @@ const Hero = ({
         </div>
       </div>
       <Link
-        href={{ pathname: "/news/[id]", params: { id: article.id } }}
+        href={{ pathname: "/news/[slug]", params: { slug: article.slug } }}
         className={
           "w-full px-[4vw] md:px-[8vw] h-2/3 bg-cover bg-center flex flex-col justify-end items-start text-white uppercase py-[2vh] md:py-[6vh]"
         }
@@ -55,7 +55,11 @@ const Hero = ({
         }}
       >
         <h4>{article.category.title}</h4>
-        <h2 className={"normal-case font-slick lg:text-5xl md:text-4xl text-xl"}>{article.title}</h2>
+        <h2
+          className={"normal-case font-slick lg:text-5xl md:text-4xl text-xl"}
+        >
+          {article.title}
+        </h2>
       </Link>
     </div>
   );
