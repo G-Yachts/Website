@@ -19,10 +19,7 @@ export const fetchFeaturedSales = async (
       query Yachts($locale: LocaleInputType!) {
         Yachts(
           locale: $locale
-          where: {
-            featured: { equals: true }
-            displayOnWebsite: { equals: true }
-          }
+          where: { featured: { equals: true }, displayOnWebsite: { not_equals: false } }
           limit: 0
         ) {
           docs {
@@ -64,11 +61,7 @@ export const fetchSales = async (locale: "en" | "fr"): Promise<ISale[]> => {
   const { data } = await client.query({
     query: gql`
       query Yachts($locale: LocaleInputType!) {
-        Yachts(
-          locale: $locale
-          where: { displayOnWebsite: { equals: true } }
-          limit: 0
-        ) {
+        Yachts(locale: $locale,where: { displayOnWebsite: { not_equals: false } }, limit: 0) {
           docs {
             id
             name
@@ -128,7 +121,7 @@ export const fetchSale = async (
     query: gql`
       query Yacht($locale: LocaleInputType!, $slug: String) {
         Yachts(
-          where: { slug: { equals: $slug }, displayOnWebsite: { equals: true } }
+          where: { slug: { equals: $slug }, displayOnWebsite: { not_equals: false } }
           locale: $locale
           fallbackLocale: en
           limit: 1
@@ -250,13 +243,7 @@ export const fetchFeaturedCharters = async (): Promise<IFeatured[]> => {
   const { data } = await client.query({
     query: gql`
       query Charters {
-        Charters(
-          where: {
-            featured: { equals: true }
-            displayOnWebsite: { equals: true }
-          }
-          limit: 0
-        ) {
+        Charters(where: { featured: { equals: true }, displayOnWebsite: { not_equals: false } }, limit: 0) {
           docs {
             id
             name
@@ -292,7 +279,7 @@ export const fetchCharters = async (): Promise<ICharter[]> => {
   const { data } = await client.query({
     query: gql`
       query Charters {
-        Charters(where: { displayOnWebsite: { equals: true } }, limit: 0) {
+        Charters(where: { displayOnWebsite: { not_equals: false } },limit: 0) {
           docs {
             id
             name
@@ -350,7 +337,7 @@ export const fetchCharter = async (
     query: gql`
       query Charter($slug: String, $locale: LocaleInputType!) {
         Charters(
-          where: { slug: { equals: $slug }, displayOnWebsite: { equals: true } }
+          where: { slug: { equals: $slug }, displayOnWebsite: { not_equals: false } }
           locale: $locale
           fallbackLocale: en
           limit: 1
@@ -488,13 +475,7 @@ export const fetchChartersForDestination = async (
   const { data: countryData } = await client.query({
     query: gql`
       query Charters($country: String!, $limit: Int!) {
-        Charters(
-          where: {
-            country: { equals: $country }
-            displayOnWebsite: { equals: true }
-          }
-          limit: $limit
-        ) {
+        Charters(where: { country: { equals: $country }, displayOnWebsite: { not_equals: false } }, limit: $limit) {
           docs {
             id
             slug
@@ -530,13 +511,7 @@ export const fetchChartersForDestination = async (
   const { data: continentData } = await client.query({
     query: gql`
       query Charters($continent: String!, $limit: Int!) {
-        Charters(
-          where: {
-            continent: { equals: $continent }
-            displayOnWebsite: { equals: true }
-          }
-          limit: $limit
-        ) {
+        Charters(where: { continent: { equals: $continent }, displayOnWebsite: { not_equals: false } }, limit: $limit) {
           docs {
             id
             slug
@@ -572,7 +547,7 @@ export const fetchChartersForDestination = async (
   const { data: randomData } = await client.query({
     query: gql`
       query Charters($limit: Int!) {
-        Charters(limit: $limit, where: { displayOnWebsite: { equals: true } }) {
+        Charters(limit: $limit, where: { displayOnWebsite: { not_equals: false } }) {
           docs {
             id
             slug
@@ -628,11 +603,7 @@ export const fetchSimilarSales = async (
   const { data: highestClicks } = await client.query({
     query: gql`
       query Yachts {
-        Yachts(
-          sort: "clicks"
-          limit: 4
-          where: { displayOnWebsite: { equals: true } }
-        ) {
+        Yachts(sort: "clicks", limit: 4, where: { displayOnWebsite: { not_equals: false } }) {
           docs {
             id
             slug
@@ -666,10 +637,7 @@ export const fetchSimilarSales = async (
         Yachts(
           sort: "length"
           limit: 2
-          where: {
-            length: { greater_than: $length }
-            displayOnWebsite: { equals: true }
-          }
+          where: { length: { greater_than: $length }, displayOnWebsite: { not_equals: false } }
         ) {
           docs {
             id
@@ -704,10 +672,7 @@ export const fetchSimilarSales = async (
         Yachts(
           sort: "length"
           limit: 2
-          where: {
-            length: { less_than: $length }
-            displayOnWebsite: { equals: true }
-          }
+          where: { length: { less_than: $length }, displayOnWebsite: { not_equals: false } }
         ) {
           docs {
             id
@@ -763,11 +728,7 @@ export const fetchSimilarCharters = async (
   const { data: highestClicks } = await client.query({
     query: gql`
       query Charters {
-        Charters(
-          sort: "clicks"
-          limit: 4
-          where: { displayOnWebsite: { equals: true } }
-        ) {
+        Charters(sort: "clicks", limit: 4, where: { displayOnWebsite: { not_equals: false } }) {
           docs {
             id
             slug
@@ -804,10 +765,7 @@ export const fetchSimilarCharters = async (
         Charters(
           sort: "length"
           limit: 2
-          where: {
-            length: { greater_than: $length }
-            displayOnWebsite: { equals: true }
-          }
+          where: { length: { greater_than: $length }, displayOnWebsite: { not_equals: false } }
         ) {
           docs {
             id
@@ -845,10 +803,7 @@ export const fetchSimilarCharters = async (
         Charters(
           sort: "length"
           limit: 2
-          where: {
-            length: { less_than: $length }
-            displayOnWebsite: { equals: true }
-          }
+          where: { length: { less_than: $length }, displayOnWebsite: { not_equals: false } }
         ) {
           docs {
             id
@@ -893,10 +848,7 @@ export const fetchNewConstructions = async (): Promise<INewConstruction[]> => {
   const { data } = await client.query({
     query: gql`
       query NewConstructions {
-        NewConstructions(
-          limit: 0
-          where: { displayOnWebsite: { equals: true } }
-        ) {
+        NewConstructions(limit: 0, where: { displayOnWebsite: { not_equals: false } }) {
           docs {
             id
             slug
@@ -953,7 +905,7 @@ export const fetchNewConstruction = async (
     query: gql`
       query NewConstruction($slug: String, $locale: LocaleInputType!) {
         NewConstructions(
-          where: { slug: { equals: $slug }, displayOnWebsite: { equals: true } }
+          where: { slug: { equals: $slug }, displayOnWebsite: { not_equals: false } }
           locale: $locale
           fallbackLocale: en
         ) {
@@ -1074,7 +1026,7 @@ export const fetchShipyards = async (): Promise<IShipyard[]> => {
   const { data } = await client.query({
     query: gql`
       query Shipyards {
-        Shipyards(limit: 50, where: { displayOnWebsite: { equals: true } }) {
+        Shipyards(limit: 50, where: { displayOnWebsite: { not_equals: false } }) {
           docs {
             id
             name
@@ -1129,11 +1081,7 @@ export const fetchSimilarNewConstructions = async (
   const { data: highestClicks } = await client.query({
     query: gql`
       query NewConstructions {
-        NewConstructions(
-          sort: "clicks"
-          limit: 4
-          where: { displayOnWebsite: { equals: true } }
-        ) {
+        NewConstructions(sort: "clicks", limit: 4, where: { displayOnWebsite: { not_equals: false } }) {
           docs {
             id
             slug
@@ -1166,10 +1114,7 @@ export const fetchSimilarNewConstructions = async (
         NewConstructions(
           sort: "length"
           limit: 2
-          where: {
-            length: { greater_than: $length }
-            displayOnWebsite: { equals: true }
-          }
+          where: { length: { greater_than: $length }, displayOnWebsite: { not_equals: false } }
         ) {
           docs {
             id
@@ -1203,10 +1148,7 @@ export const fetchSimilarNewConstructions = async (
         NewConstructions(
           sort: "length"
           limit: 2
-          where: {
-            length: { less_than: $length }
-            displayOnWebsite: { equals: true }
-          }
+          where: { length: { less_than: $length }, displayOnWebsite: { not_equals: false } }
         ) {
           docs {
             id
