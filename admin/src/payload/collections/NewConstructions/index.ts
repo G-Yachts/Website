@@ -47,7 +47,7 @@ export const NewConstructions: CollectionConfig = {
   },
   versions: false,
   access: {
-    read: anyone,
+    read: users,
     create: users,
     update: users,
     delete: users,

@@ -52,7 +52,7 @@ export const Charters: CollectionConfig = {
   },
   versions: false,
   access: {
-    read: anyone,
+    read: users,
     create: users,
     update: users,
     delete: users,

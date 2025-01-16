@@ -44,7 +44,7 @@ export const Yachts: CollectionConfig = {
   },
   versions: false,
   access: {
-    read: anyone,
+    read: users,
     create: users,
     update: users,
     delete: users,

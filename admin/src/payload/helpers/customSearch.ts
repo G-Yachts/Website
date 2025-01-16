@@ -1,7 +1,6 @@
 import { Response } from 'express'
 import type { PayloadRequest } from 'payload/types'
 import payload from 'payload'
-import { Article, Charter, Destination, Yacht } from '../payload-types'
 
 export const customSearchHandler = async (req: PayloadRequest, res: Response) => {
   const {
@@ -73,6 +72,9 @@ const searchCollection = async (
     // Try to find the query in the database with diacritics ignored
     result = await payload.db.collections[collection].find(
       {
+        ...(collection === 'yachts' || collection === 'charters'
+          ? { displayOnWebsite: { $ne: false } }
+          : {}),
         [queryField]: {
           $regex: RegExp(cleanedQuery, 'i'),
         },
@@ -94,6 +96,9 @@ const searchCollection = async (
     try {
       result = await payload.db.collections[collection].find(
         {
+          ...(collection === 'yachts' || collection === 'charters'
+            ? { displayOnWebsite: { $ne: false } }
+            : {}),
           [queryField]: {
             $regex: query,
           },
