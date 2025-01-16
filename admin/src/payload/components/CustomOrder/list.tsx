@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { clsx } from 'clsx'
+
 import {
   Charter,
   Destination,
@@ -11,12 +13,12 @@ import {
   User,
   Yacht,
 } from '../../payload-types'
-import reorderList from './reorderList'
-import { clsx } from 'clsx'
-import './orderListStyles.css'
-import { MoveArrows } from './MoveArrows'
 import { DragHandle } from './DragHandle'
+import { MoveArrows } from './MoveArrows'
 import { queryCollection } from './queryCollection'
+import reorderList from './reorderList'
+
+import './orderListStyles.css'
 
 export const CustomCollectionList = <
   T extends Yacht | Charter | User | Shipyard | Destination | Partner | NewConstruction,

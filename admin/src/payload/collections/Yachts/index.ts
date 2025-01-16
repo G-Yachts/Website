@@ -2,14 +2,12 @@ import type { CollectionConfig } from 'payload/types'
 
 import { anyone } from '../../access/anyone'
 import { users } from '../../access/users'
-import { yachtsAndCharterCommonFields } from '../shared/YachtAndCharterFields'
-import { seoField } from '../shared/seo'
-import { generateBrochureHook } from '../../hooks/generateBrochureHook'
-import { deleteBrochureHook } from '../../hooks/deleteBrochure'
-import DuplicateToCharter from './components/duplicate'
 import { CustomCollectionList } from '../../components/CustomOrder/list'
-import { indexField } from '../shared/indexField'
 import mountSlug from '../../utilities/mountSlug'
+import { indexField } from '../shared/indexField'
+import { seoField } from '../shared/seo'
+import { yachtsAndCharterCommonFields } from '../shared/YachtAndCharterFields'
+import DuplicateToCharter from './components/duplicate'
 
 export const Yachts: CollectionConfig = {
   slug: 'yachts',

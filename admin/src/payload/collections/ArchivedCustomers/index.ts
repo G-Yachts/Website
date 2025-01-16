@@ -1,7 +1,9 @@
-import { CollectionConfig, Field } from 'payload/types'
+import type { CollectionConfig } from 'payload/types'
+import { Field } from 'payload/types'
+
 import { users } from '../../access/users'
-import Status from '../Messages/components/status'
 import Label from '../Messages/components/label'
+import Status from '../Messages/components/status'
 import { sharedYachtAndCharterFields } from './sharedFields'
 
 export const ArchivedCustomers: CollectionConfig = {

@@ -1,6 +1,6 @@
+import React from 'react'
 import { Button } from 'payload/components'
 import { useField } from 'payload/components/forms'
-import React from 'react'
 
 export default function LinkToCustomer({ path }) {
   const { value } = useField({

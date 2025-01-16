@@ -1,7 +1,8 @@
 import type { Field } from 'payload/types'
-import BrochureComponent from './brochureComponent'
-import BulkUpload from '../../components/bulkUpload'
+
 import { anyone } from '../../access/anyone'
+import BulkUpload from '../../components/bulkUpload'
+import BrochureComponent from './brochureComponent'
 
 export const yachtsAndCharterCommonFields = (type: 'charter' | 'yacht'): Field[] => [
   {

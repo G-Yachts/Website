@@ -1,7 +1,7 @@
 import React from 'react'
+import { toast } from 'react-toastify'
 import { Button } from 'payload/components'
 import { reduceFieldsToValues, useAllFormFields } from 'payload/components/forms'
-import { toast } from 'react-toastify'
 
 export default function DuplicateToCharter() {
   const [fields, dispatchFields] = useAllFormFields()

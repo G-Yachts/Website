@@ -1,5 +1,5 @@
-import { Response } from 'express'
-import { PayloadRequest } from 'payload/types'
+import type { Response } from 'express'
+import type { PayloadRequest } from 'payload/types'
 
 export async function reorderCollection(req: PayloadRequest, res: Response) {
   if (!req.user) {
@@ -17,10 +17,10 @@ export async function reorderCollection(req: PayloadRequest, res: Response) {
       | 'destinations'
       | 'partners'
       | 'new-constructions'
-    items: {
+    items: Array<{
       id: string
       indexField: number
-    }[]
+    }>
   } = req.body
 
   if (!collection || !items) {

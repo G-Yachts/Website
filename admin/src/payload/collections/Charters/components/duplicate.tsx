@@ -1,7 +1,7 @@
 import React from 'react'
+import { toast } from 'react-toastify'
 import { Button } from 'payload/components'
 import { reduceFieldsToValues, useAllFormFields } from 'payload/components/forms'
-import { toast } from 'react-toastify'
 
 export default function DuplicateToSales() {
   const [fields, dispatchFields] = useAllFormFields()
@@ -16,7 +16,7 @@ export default function DuplicateToSales() {
         },
         body: JSON.stringify({
           ...formData,
-          price: 0
+          price: 0,
         }),
         credentials: 'include',
       })

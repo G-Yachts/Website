@@ -1,6 +1,6 @@
-import { Response } from 'express'
-import type { PayloadRequest } from 'payload/types'
+import type { Response } from 'express'
 import payload from 'payload'
+import type { PayloadRequest } from 'payload/types'
 
 export const customSearchHandler = async (req: PayloadRequest, res: Response) => {
   const {

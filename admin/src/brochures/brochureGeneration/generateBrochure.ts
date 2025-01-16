@@ -1,12 +1,13 @@
+import { Chromiumly, PDFEngines, PdfFormat } from 'chromiumly'
 import payload from 'payload'
-import { generateBrochureFirstPage } from './pages/first'
-import { generateBrochureDetailsPage } from './pages/detail'
-import { generateBrochurePhotoPage } from './pages/photo'
-import { generateBrochureLastPage } from './pages/end'
-import puppeteer from 'puppeteer'
-import { PDFEngines, Chromiumly, PdfFormat } from 'chromiumly'
 import { TypeWithID } from 'payload/types'
-import { Charter, NewConstruction, Yacht } from '../../payload/payload-types'
+import puppeteer from 'puppeteer'
+
+import type { Charter, NewConstruction, Yacht } from '../../payload/payload-types'
+import { generateBrochureDetailsPage } from './pages/detail'
+import { generateBrochureLastPage } from './pages/end'
+import { generateBrochureFirstPage } from './pages/first'
+import { generateBrochurePhotoPage } from './pages/photo'
 
 Chromiumly.configure({ endpoint: process.env.GOTENBERG_ENDPOINT })
 

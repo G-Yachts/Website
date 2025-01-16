@@ -1,6 +1,7 @@
-import { Access, AccessArgs, AccessResult } from 'payload/config'
-import { Message, User } from '../../../payload-types'
-import { PayloadRequest } from 'payload/types'
+import type { Access, AccessArgs, AccessResult } from 'payload/config'
+import type { PayloadRequest } from 'payload/types'
+
+import type { Message, User } from '../../../payload-types'
 import { checkRole } from '../../Users/checkRole'
 
 interface MessagesAccessArgs extends AccessArgs {

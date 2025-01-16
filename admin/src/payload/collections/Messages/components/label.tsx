@@ -1,6 +1,6 @@
+import React from 'react'
 import { Label, useField } from 'payload/components/forms'
 import { useLocale } from 'payload/components/utilities'
-import React from 'react'
 
 export default function LabelComponent({ path, label, type }) {
   const { code } = useLocale()

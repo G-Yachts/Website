@@ -1,4 +1,5 @@
-import { Field } from 'payload/types'
+import type { Field } from 'payload/types'
+
 import Label from '../Messages/components/label'
 
 export const sharedYachtAndCharterFields = (type: 'charter' | 'yacht'): Field[] => [

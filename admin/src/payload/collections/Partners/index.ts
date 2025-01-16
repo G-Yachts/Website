@@ -2,9 +2,9 @@ import type { CollectionConfig } from 'payload/types'
 
 import { anyone } from '../../access/anyone'
 import { users } from '../../access/users'
-import { seoField } from '../shared/seo'
-import { indexField } from '../shared/indexField'
 import { CustomCollectionList } from '../../components/CustomOrder/list'
+import { indexField } from '../shared/indexField'
+import { seoField } from '../shared/seo'
 
 export const Partners: CollectionConfig = {
   slug: 'partners',

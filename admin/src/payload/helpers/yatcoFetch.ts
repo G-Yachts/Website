@@ -1,6 +1,7 @@
-import { Response } from 'express'
-import { PayloadRequest } from 'payload/types'
-import { Yacht } from '../payload-types'
+import type { Response } from 'express'
+import type { PayloadRequest } from 'payload/types'
+
+import type { Yacht } from '../payload-types'
 
 export async function fetchYatcoYachts(req: PayloadRequest, res: Response) {
   if (!req.user) {

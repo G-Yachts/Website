@@ -1,4 +1,5 @@
-import { Request, Response } from 'express'
+import type { Request, Response } from 'express'
+
 import { generateBrochure } from './brochureGeneration/generateBrochure'
 
 export const getBrochure = async (req: Request, res: Response) => {

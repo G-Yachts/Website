@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload/types'
+
 import { users } from '../access/users'
 
 const Categories: CollectionConfig = {

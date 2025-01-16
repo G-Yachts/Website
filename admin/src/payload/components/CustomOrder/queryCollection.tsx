@@ -1,11 +1,11 @@
 import {
-  Yacht,
   Charter,
-  Shipyard,
   Destination,
-  Partner,
   NewConstruction,
+  Partner,
+  Shipyard,
   User,
+  Yacht,
 } from '../../payload-types'
 
 export const queryCollection = async <

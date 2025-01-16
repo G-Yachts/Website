@@ -1,6 +1,6 @@
+import React from 'react'
 import { Button } from 'payload/components'
 import { useField } from 'payload/components/forms'
-import React from 'react'
 
 export default function Reply({ path, validate }) {
   const {
@@ -24,7 +24,7 @@ export default function Reply({ path, validate }) {
         }}
       >
         Email:{' '}
-        <i style={{marginLeft: "0.5rem"}}>
+        <i style={{ marginLeft: '0.5rem' }}>
           <b>{value}</b>
         </i>
       </span>

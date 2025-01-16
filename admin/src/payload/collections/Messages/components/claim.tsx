@@ -1,8 +1,8 @@
+import React, { useMemo } from 'react'
 import { Button } from 'payload/components'
-import { useFormFields, useForm } from 'payload/components/forms'
+import { useForm, useFormFields } from 'payload/components/forms'
 import { useAuth } from 'payload/components/utilities'
 import { User } from 'payload/dist/auth'
-import React, { useMemo } from 'react'
 
 export default function Claim({ path, validate }) {
   const userField = useFormFields(([fields, dispatch]) => fields.user)

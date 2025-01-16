@@ -16,8 +16,8 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 COPY package*.json ./
 
 COPY . .
-RUN yarn install
-RUN yarn build
+RUN npm install
+RUN npm run build
 
 FROM base as runtime
 
@@ -35,10 +35,10 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 WORKDIR /home/node/app
 COPY package*.json  ./
 
-RUN yarn install --production
+RUN npm install --only=production
 COPY --from=builder /home/node/app/dist ./dist
 COPY --from=builder /home/node/app/build ./build
 
 EXPOSE 3000
 
-CMD ["yarn", "serve"]
+CMD ["npm", "run", "serve"]

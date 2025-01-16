@@ -1,12 +1,13 @@
-import { CollectionConfig } from 'payload/types'
-import Claim from './components/claim'
-import { assignedOrUnclaimed } from './hooks/read'
-import Status from './components/status'
-import Reply from './components/reply'
-import Label from './components/label'
-import { Charter, Message, Yacht } from '../../payload-types'
-import { validateCharertDates } from './hooks/validateCharterDates'
+import type { CollectionConfig } from 'payload/types'
+
 import { anyone } from '../../access/anyone'
+import type { Charter, Message, Yacht } from '../../payload-types'
+import Claim from './components/claim'
+import Label from './components/label'
+import Reply from './components/reply'
+import Status from './components/status'
+import { assignedOrUnclaimed } from './hooks/read'
+import { validateCharertDates } from './hooks/validateCharterDates'
 
 export const Messages: CollectionConfig = {
   slug: 'messages',

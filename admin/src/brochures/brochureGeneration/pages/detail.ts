@@ -2,21 +2,21 @@ import type { Charter, NewConstruction, Yacht } from '../../../payload/payload-t
 
 export const generateBrochureDetailsPage = (doc: Yacht | Charter | NewConstruction): string => {
   var details = [
-    { label: 'Builder', value: doc.builder ?? "" },
-    { label: 'Year built', value: doc.yearBuilt ?? "" },
-    { label: 'Year Refit', value: doc.yearRefit ?? "" },
-    { label: 'Length', value: doc.length ?? "" },
-    { label: 'LOA', value: doc.LOA ?? "" },
-    { label: 'Beam', value: doc.beam ?? "" },
-    { label: 'Max draft', value: doc.maxDraft ?? "" },
-    { label: 'Min draft', value: doc.minDraft ?? "" },
-    { label: 'Rooms', value: doc.rooms ?? "" },
-    { label: 'People', value: doc.sleeps ?? "" },
-    { label: 'Material', value: doc.material ?? "" },
-    { label: 'Tonnage', value: doc.tonnage ?? "" },
+    { label: 'Builder', value: doc.builder ?? '' },
+    { label: 'Year built', value: doc.yearBuilt ?? '' },
+    { label: 'Year Refit', value: doc.yearRefit ?? '' },
+    { label: 'Length', value: doc.length ?? '' },
+    { label: 'LOA', value: doc.LOA ?? '' },
+    { label: 'Beam', value: doc.beam ?? '' },
+    { label: 'Max draft', value: doc.maxDraft ?? '' },
+    { label: 'Min draft', value: doc.minDraft ?? '' },
+    { label: 'Rooms', value: doc.rooms ?? '' },
+    { label: 'People', value: doc.sleeps ?? '' },
+    { label: 'Material', value: doc.material ?? '' },
+    { label: 'Tonnage', value: doc.tonnage ?? '' },
   ]
 
-  details = details.filter(detail => detail.value !== "")
+  details = details.filter(detail => detail.value !== '')
 
   const sixDetails = details.slice(0, 6)
   const remainingDetails = details.slice(6, 12)

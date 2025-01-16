@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload/types'
 import { anyone } from '../../access/anyone'
 import { users } from '../../access/users'
 import { seoField } from '../shared/seo'
-import values from "../Users/values";
+import values from '../Users/values'
 
 export const Brokers: CollectionConfig = {
   slug: 'sell-brokers',

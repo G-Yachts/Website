@@ -1,6 +1,7 @@
-import { AccessResult } from 'payload/config'
-import { Media } from '../payload-types'
-import { PayloadRequest } from 'payload/types'
+import type { AccessResult } from 'payload/config'
+import type { PayloadRequest } from 'payload/types'
+
+import type { Media } from '../payload-types'
 
 export default async function isMediaUsed({
   data,
@@ -86,6 +87,5 @@ export default async function isMediaUsed({
     return false
   }
 
-  
   return true
 }

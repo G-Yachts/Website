@@ -1,7 +1,8 @@
 import React from 'react'
 import { useFieldType, useFormFields } from 'payload/components/forms'
-import { User } from '../../../payload-types'
 import { useAuth } from 'payload/components/utilities'
+
+import { User } from '../../../payload-types'
 
 export default function Status({ path, validate }) {
   const { value = '', setValue } = useFieldType({

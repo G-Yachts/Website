@@ -3,8 +3,8 @@ import type { CollectionConfig, PayloadRequest } from 'payload/types'
 import { anyone } from '../../access/anyone'
 import { users } from '../../access/users'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
-import { seoField } from '../shared/seo'
 import mountSlug from '../../utilities/mountSlug'
+import { seoField } from '../shared/seo'
 
 export const Articles: CollectionConfig = {
   slug: 'articles',
