@@ -395,19 +395,25 @@ export const fetchSitemap = async () => {
               updatedAt
             }
           }
-          Yachts(limit: 0) {
+          Yachts(where: { displayOnWebsite: { not_equals: false } }, limit: 0) {
             docs {
               slug
               updatedAt
             }
           }
-          Charters(limit: 0) {
+          Charters(
+            where: { displayOnWebsite: { not_equals: false } }
+            limit: 0
+          ) {
             docs {
               slug
               updatedAt
             }
           }
-          NewConstructions(limit: 0) {
+          NewConstructions(
+            where: { displayOnWebsite: { not_equals: false } }
+            limit: 0
+          ) {
             docs {
               slug
               updatedAt

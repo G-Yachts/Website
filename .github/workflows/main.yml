@@ -30,6 +30,8 @@ jobs:
           file: ./web/Dockerfile
           push: true
           tags: ghcr.io/g-yachts/g-yachts-web:${{github.sha}}
+          secrets: |
+            "PAYLOAD_API_KEY=${{secrets.PAYLOAD_API_KEY}}"
 
       - name: Build and push Admin
         uses: docker/build-push-action@v5.3.0
