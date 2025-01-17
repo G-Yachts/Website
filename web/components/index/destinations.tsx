@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const Card = ({ card }: { card: IDestination }) => {
   return (
     <Link
-      href={{ pathname: "/destinations/[id]", params: { id: card.id } }}
+      href={{ pathname: "/destinations/[slug]", params: { slug: card.slug } }}
       className={
         " flex flex-col w-max justify-center items-start font-classic font-normal tracking-wider group transition-transform lg:duration-[var(--animate-destination)] ease-in-out lg:translate-x-[var(--translate-destination)] pr-[1.5vw]"
       }
