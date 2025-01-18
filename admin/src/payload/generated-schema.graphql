@@ -69,6 +69,8 @@ type Query {
   PayloadPreferences(where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
   countPayloadPreferences(where: PayloadPreference_where, locale: LocaleInputType): countPayloadPreferences
   docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
+  ExchangeRate(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): ExchangeRate
+  docAccessExchangeRate: exchange_ratesDocAccess
   Access: Access
 }
 
@@ -22806,6 +22808,153 @@ type PayloadPreferencesDeleteDocAccess {
   where: JSONObject
 }
 
+type ExchangeRate {
+  usd: Float
+  gbp: Float
+  jpy: Float
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type exchange_ratesDocAccess {
+  fields: ExchangeRatesDocAccessFields
+  read: ExchangeRatesReadDocAccess
+  update: ExchangeRatesUpdateDocAccess
+}
+
+type ExchangeRatesDocAccessFields {
+  usd: ExchangeRatesDocAccessFields_usd
+  gbp: ExchangeRatesDocAccessFields_gbp
+  jpy: ExchangeRatesDocAccessFields_jpy
+  updatedAt: ExchangeRatesDocAccessFields_updatedAt
+  createdAt: ExchangeRatesDocAccessFields_createdAt
+}
+
+type ExchangeRatesDocAccessFields_usd {
+  create: ExchangeRatesDocAccessFields_usd_Create
+  read: ExchangeRatesDocAccessFields_usd_Read
+  update: ExchangeRatesDocAccessFields_usd_Update
+  delete: ExchangeRatesDocAccessFields_usd_Delete
+}
+
+type ExchangeRatesDocAccessFields_usd_Create {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_usd_Read {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_usd_Update {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_usd_Delete {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_gbp {
+  create: ExchangeRatesDocAccessFields_gbp_Create
+  read: ExchangeRatesDocAccessFields_gbp_Read
+  update: ExchangeRatesDocAccessFields_gbp_Update
+  delete: ExchangeRatesDocAccessFields_gbp_Delete
+}
+
+type ExchangeRatesDocAccessFields_gbp_Create {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_gbp_Read {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_gbp_Update {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_gbp_Delete {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_jpy {
+  create: ExchangeRatesDocAccessFields_jpy_Create
+  read: ExchangeRatesDocAccessFields_jpy_Read
+  update: ExchangeRatesDocAccessFields_jpy_Update
+  delete: ExchangeRatesDocAccessFields_jpy_Delete
+}
+
+type ExchangeRatesDocAccessFields_jpy_Create {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_jpy_Read {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_jpy_Update {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_jpy_Delete {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_updatedAt {
+  create: ExchangeRatesDocAccessFields_updatedAt_Create
+  read: ExchangeRatesDocAccessFields_updatedAt_Read
+  update: ExchangeRatesDocAccessFields_updatedAt_Update
+  delete: ExchangeRatesDocAccessFields_updatedAt_Delete
+}
+
+type ExchangeRatesDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_createdAt {
+  create: ExchangeRatesDocAccessFields_createdAt_Create
+  read: ExchangeRatesDocAccessFields_createdAt_Read
+  update: ExchangeRatesDocAccessFields_createdAt_Update
+  delete: ExchangeRatesDocAccessFields_createdAt_Delete
+}
+
+type ExchangeRatesDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type ExchangeRatesDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type ExchangeRatesReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ExchangeRatesUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type Access {
   canAccessAdmin: Boolean!
   articles: articlesAccess
@@ -22825,6 +22974,7 @@ type Access {
   messages: messagesAccess
   archived_customers: archived_customersAccess
   payload_preferences: payload_preferencesAccess
+  exchange_rates: exchange_ratesAccess
 }
 
 type articlesAccess {
@@ -32272,6 +32422,145 @@ type PayloadPreferencesDeleteAccess {
   where: JSONObject
 }
 
+type exchange_ratesAccess {
+  fields: ExchangeRatesFields
+  read: ExchangeRatesReadAccess
+  update: ExchangeRatesUpdateAccess
+}
+
+type ExchangeRatesFields {
+  usd: ExchangeRatesFields_usd
+  gbp: ExchangeRatesFields_gbp
+  jpy: ExchangeRatesFields_jpy
+  updatedAt: ExchangeRatesFields_updatedAt
+  createdAt: ExchangeRatesFields_createdAt
+}
+
+type ExchangeRatesFields_usd {
+  create: ExchangeRatesFields_usd_Create
+  read: ExchangeRatesFields_usd_Read
+  update: ExchangeRatesFields_usd_Update
+  delete: ExchangeRatesFields_usd_Delete
+}
+
+type ExchangeRatesFields_usd_Create {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_usd_Read {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_usd_Update {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_usd_Delete {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_gbp {
+  create: ExchangeRatesFields_gbp_Create
+  read: ExchangeRatesFields_gbp_Read
+  update: ExchangeRatesFields_gbp_Update
+  delete: ExchangeRatesFields_gbp_Delete
+}
+
+type ExchangeRatesFields_gbp_Create {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_gbp_Read {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_gbp_Update {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_gbp_Delete {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_jpy {
+  create: ExchangeRatesFields_jpy_Create
+  read: ExchangeRatesFields_jpy_Read
+  update: ExchangeRatesFields_jpy_Update
+  delete: ExchangeRatesFields_jpy_Delete
+}
+
+type ExchangeRatesFields_jpy_Create {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_jpy_Read {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_jpy_Update {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_jpy_Delete {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_updatedAt {
+  create: ExchangeRatesFields_updatedAt_Create
+  read: ExchangeRatesFields_updatedAt_Read
+  update: ExchangeRatesFields_updatedAt_Update
+  delete: ExchangeRatesFields_updatedAt_Delete
+}
+
+type ExchangeRatesFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_createdAt {
+  create: ExchangeRatesFields_createdAt_Create
+  read: ExchangeRatesFields_createdAt_Read
+  update: ExchangeRatesFields_createdAt_Update
+  delete: ExchangeRatesFields_createdAt_Delete
+}
+
+type ExchangeRatesFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type ExchangeRatesFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type ExchangeRatesReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ExchangeRatesUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type Mutation {
   createArticle(data: mutationArticleInput!, locale: LocaleInputType): Article
   updateArticle(id: String!, autosave: Boolean, data: mutationArticleUpdateInput!, locale: LocaleInputType): Article
@@ -32331,6 +32620,7 @@ type Mutation {
   createPayloadPreference(data: mutationPayloadPreferenceInput!, locale: LocaleInputType): PayloadPreference
   updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
+  updateExchangeRate(data: mutationExchangeRateInput!, draft: Boolean, locale: LocaleInputType): ExchangeRate
 }
 
 input mutationArticleInput {
@@ -35308,4 +35598,12 @@ input PayloadPreferenceUpdate_UserRelationshipInput {
 
 enum PayloadPreferenceUpdate_UserRelationshipInputRelationTo {
   users
+}
+
+input mutationExchangeRateInput {
+  usd: Float
+  gbp: Float
+  jpy: Float
+  updatedAt: String
+  createdAt: String
 }

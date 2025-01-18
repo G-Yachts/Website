@@ -84,6 +84,7 @@ jobs:
             echo "PAYLOAD_SECRET=${{secrets.PAYLOAD_SECRET}}" >> .env
             echo "PAYLOAD_PUBLIC_SERVER_URL=https://www.g-yachts.com" >> .env
             echo "PAYLOAD_YATCO_API_KEY=${{secrets.PAYLOAD_YATCO_API_KEY}}" >> .env
+            echo "ALPHA_VANTAGE_API_KEY=${{secrets.ALPHA_VANTAGE_API_KEY}}" >> .env
 
       - name: Transfer Compose
         uses: appleboy/scp-action@master

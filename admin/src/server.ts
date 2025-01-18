@@ -1,4 +1,5 @@
 import dotenv from 'dotenv'
+import cron from 'node-cron'
 import path from 'path'
 
 // This file is used to replace `server.ts` when ejecting i.e. `yarn eject`
@@ -13,6 +14,7 @@ import express from 'express'
 import payload from 'payload'
 
 import { getBrochure } from './brochures/getBrochure'
+import { ExchangeRate } from './payload/payload-types'
 
 const app = express()
 const PORT = process.env.PAYLOAD_PORT || 3000
@@ -32,6 +34,36 @@ const start = async (): Promise<void> => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
     },
   })
+
+  const updateExchangeRates = async (): Promise<ExchangeRate> => {
+    try {
+      const getRate = async (symbol: 'EURUSD' | 'EURGBP' | 'EURJPY'): Promise<number> =>
+        await fetch(
+          `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${process.env.ALPHA_VANTAGE_API_KEY}&outputSize=compact`,
+        )
+          .then(res => res.json())
+          .then(data => {
+            const timeSeries = data['Time Series (Daily)'],
+              firstEntry = Object.values(timeSeries)[0] as { '4. close': string }
+            return parseFloat(firstEntry['4. close'])
+          })
+
+      return await payload.updateGlobal({
+        slug: 'exchange-rates',
+        data: {
+          usd: await getRate('EURUSD'),
+          gbp: await getRate('EURGBP'),
+          jpy: await getRate('EURJPY'),
+        },
+      })
+    } catch (err: unknown) {
+      console.error(err)
+    }
+  }
+
+  await updateExchangeRates()
+
+  cron.schedule('0 0 * * *', async () => await updateExchangeRates())
 
   app.listen(PORT, async () => {
     payload.logger.info(`Server started`)

@@ -27,7 +27,9 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  globals: {};
+  globals: {
+    'exchange-rates': ExchangeRate;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1505,6 +1507,18 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "exchange-rates".
+ */
+export interface ExchangeRate {
+  id: string;
+  usd?: number | null;
+  gbp?: number | null;
+  jpy?: number | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 
 

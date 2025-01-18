@@ -27,6 +27,7 @@ import { reorderCollection } from './helpers/reorderCollection'
 import { fetchYatcoYachts } from './helpers/yatcoFetch'
 import { importYatcoYacht } from './helpers/yatcoImport'
 import ImportYachts from './views/importYachts'
+import ExchangeRates from './collections/ExchangeRates'
 
 dotenv.config({
   path: path.resolve(__dirname, '../../.env'),
@@ -91,6 +92,7 @@ export default buildConfig({
     Messages,
     ArchivedCustomers,
   ],
+  globals: [ExchangeRates],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

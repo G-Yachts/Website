@@ -58,14 +58,14 @@ export const ViewProvider = ({ children }: { children: React.ReactNode }) => {
     [bookmarks, setBookmarks] = useState<IContext["bookmarks"]>(useBookmarks()),
     [cookiesAgreed, setCookiesAgreement] =
       useState<IContext["cookiesAgreed"]>(true),
-    changeCurrency = (code: IContext["currency"]) => {
-      Cookies.set("currency", code);
-      setCurrency(code);
-    },
     changeUnits = (units: IContext["units"]) => {
       Cookies.set("length", units.length);
       Cookies.set("weight", units.weight);
       setUnits(units);
+    },
+    changeCurrency = (currency: IContext["currency"]) => {
+      Cookies.set("currency", currency);
+      setCurrency(currency);
     },
     addBookmark = (id: string) => {
       Cookies.set("bookmarks", JSON.stringify([...bookmarks, id]), {
@@ -83,38 +83,15 @@ export const ViewProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const assignRates = async () => {
-      const cached = {
-        USD: Cookies.get("rate_USD"),
-        GBP: Cookies.get("rate_GBP"),
-        JPY: Cookies.get("rate_JPY"),
-      };
-
-      const cookiefy = (key: string, value: number) => {
-        Cookies.set(`rate_${key}`, value.toString(), { expires: 1 });
-        return value;
-      };
-
+      const data = await getRate();
       setRates({
-        ...rates,
-        USD: cached.USD
-          ? parseFloat(cached.USD)
-          : (await getRate("USD").then(
-              (rate) => rate && cookiefy("USD", rate),
-            )) || 1,
-        GBP: cached.GBP
-          ? parseFloat(cached.GBP)
-          : (await getRate("GBP").then(
-              (rate) => rate && cookiefy("GBP", rate),
-            )) || 1,
-        JPY: cached.JPY
-          ? parseFloat(cached.JPY)
-          : (await getRate("JPY").then(
-              (rate) => rate && cookiefy("JPY", rate),
-            )) || 1,
+        EUR: 1,
+        USD: data.usd,
+        GBP: data.gbp,
+        JPY: data.jpy,
       });
     };
     assignRates();
-    setCookiesAgreement(Cookies.get("cookiesAgreed") === "true");
   }, []);
 
   const value = {
