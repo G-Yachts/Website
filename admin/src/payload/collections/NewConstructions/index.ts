@@ -36,6 +36,12 @@ export const NewConstructions: CollectionConfig = {
       },
     },
   },
+  hooks: {
+    afterChange: [
+      ({ doc, operation }) =>
+        mountSlug({ name: doc.name, id: doc.id, operation, collection: 'new-constructions' }),
+    ],
+  },
   versions: false,
   access: {
     read: users,

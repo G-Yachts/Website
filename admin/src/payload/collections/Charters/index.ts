@@ -41,6 +41,12 @@ export const Charters: CollectionConfig = {
       },
     },
   },
+  hooks: {
+    afterChange: [
+      ({ doc, operation }) =>
+        mountSlug({ name: doc.name, id: doc.id, operation, collection: 'charters' }),
+    ],
+  },
   versions: false,
   access: {
     read: users,

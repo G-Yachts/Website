@@ -40,6 +40,12 @@ export const Yachts: CollectionConfig = {
       },
     },
   },
+  hooks: {
+    afterChange: [
+      ({ doc, operation }) =>
+        mountSlug({ name: doc.name, id: doc.id, operation, collection: 'yachts' }),
+    ],
+  },
   versions: false,
   access: {
     read: users,
