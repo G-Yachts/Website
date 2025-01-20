@@ -5,6 +5,7 @@ import { gql } from "@apollo/client";
 import { Metadata } from "next";
 import { joinSEO } from "@/utils/metadata";
 import puppeteer from "puppeteer";
+import { IContext } from "@/context/view";
 
 export const fetchMetadata = async ({
   slug,
@@ -395,19 +396,25 @@ export const fetchSitemap = async () => {
               updatedAt
             }
           }
-          Yachts(limit: 0) {
+          Yachts(where: { displayOnWebsite: { not_equals: false } }, limit: 0) {
             docs {
               slug
               updatedAt
             }
           }
-          Charters(limit: 0) {
+          Charters(
+            where: { displayOnWebsite: { not_equals: false } }
+            limit: 0
+          ) {
             docs {
               slug
               updatedAt
             }
           }
-          NewConstructions(limit: 0) {
+          NewConstructions(
+            where: { displayOnWebsite: { not_equals: false } }
+            limit: 0
+          ) {
             docs {
               slug
               updatedAt
@@ -431,41 +438,19 @@ export const fetchSitemap = async () => {
   ).data;
 };
 
-export const getRate = async (currency: string) => {
-  if (currency === "EUR") return 1;
-
-  try {
-    const url = `https://finance.yahoo.com/quote/EUR${currency}=X/`,
-      browser = await puppeteer.launch({
-        headless: true,
-        defaultViewport: null,
-        executablePath: "/usr/bin/google-chrome",
-        args: ["--no-sandbox"],
-      }),
-      page = await browser.newPage();
-
-    await page.goto(url, { waitUntil: "networkidle2" });
-
-    const consentSel = 'button[name="agree"]';
-    await page
-      .locator(consentSel)
-      .click()
-      .then(
-        async () => await page.waitForNavigation({ waitUntil: "networkidle2" }),
-      );
-
-    const rate = await page.evaluate(() => {
-      const element = document.querySelector(
-        'fin-streamer[data-testid="qsp-price"]',
-      );
-
-      return element && element.textContent && parseFloat(element.textContent);
-    });
-
-    await browser.close();
-    return rate;
-  } catch (e) {
-    console.error("Error fetching currency: ", e);
-    return 1;
-  }
+export const getRate = async () => {
+  const client = getClient();
+  return (
+    await client.query({
+      query: gql`
+        query ExchangeRate {
+          ExchangeRate {
+            usd
+            gbp
+            jpy
+          }
+        }
+      `,
+    })
+  ).data.ExchangeRate;
 };
