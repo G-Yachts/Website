@@ -21,7 +21,7 @@ const fetchYachts = async (): Promise<Yacht[]> => {
         Authorization: `Basic ${process.env.PAYLOAD_YATCO_API_KEY}`,
       },
       body: JSON.stringify({
-        BrokerageCompany: 'g-yachts',
+        records: 6000,
       }),
     })
 
