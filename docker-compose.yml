@@ -37,7 +37,7 @@ services:
       - gYachts
     env_file:
       - .env
-  
+
   admin:
     image: ghcr.io/g-yachts/g-yachts-admin:${GITHUB_SHA}
     restart: unless-stopped
@@ -55,6 +55,7 @@ services:
 
   mongo:
     image: mongo:latest
+    restart: always
     container_name: mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}
