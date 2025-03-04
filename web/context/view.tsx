@@ -56,8 +56,9 @@ export const ViewProvider = ({ children }: { children: React.ReactNode }) => {
     [units, setUnits] = useState<IContext["units"]>(useUnits()),
     [view, openView] = useState<IContext["view"]>(null),
     [bookmarks, setBookmarks] = useState<IContext["bookmarks"]>(useBookmarks()),
-    [cookiesAgreed, setCookiesAgreement] =
-      useState<IContext["cookiesAgreed"]>(true),
+    [cookiesAgreed, setCookiesAgreement] = useState<IContext["cookiesAgreed"]>(
+      Cookies.get("cookiesAgreed") === "true",
+    ),
     changeUnits = (units: IContext["units"]) => {
       Cookies.set("length", units.length);
       Cookies.set("weight", units.weight);

@@ -60,7 +60,7 @@ const Search = () => {
           <input
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value.trim())}
+            onChange={(e) => setQuery(e.target.value)}
             autoComplete="off"
             className={
               "w-full px-1 py-2 bg-transparent border-b border-black focus:outline-none placeholder:text-rock-500 font-classic font-normal"

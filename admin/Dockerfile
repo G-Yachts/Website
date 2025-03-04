@@ -16,7 +16,7 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 COPY package*.json ./
 
 COPY . .
-RUN npm install
+RUN npm install --force
 RUN npm run build
 
 FROM base as runtime
@@ -35,7 +35,7 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 WORKDIR /home/node/app
 COPY package*.json  ./
 
-RUN npm install --only=production
+RUN npm install --only=production --force
 COPY --from=builder /home/node/app/dist ./dist
 COPY --from=builder /home/node/app/build ./build
 
