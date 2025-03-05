@@ -24,7 +24,7 @@ export const customSearchHandler = async (req: PayloadRequest, res: Response) =>
 
   const cleanedQuery = cleanString(query)
   // REplace everything that is not a letter or a number with a space
-  const superCleanedQuery = cleanedQuery.replace(/[^a-zA-Z0-9]/g, '')
+  const superCleanedQuery = cleanedQuery.replace(/[^a-zA-Z0-9\s]/g, '')
 
   const yachts = await searchCollection(superCleanedQuery, 'yachts')
   const charters = await searchCollection(superCleanedQuery, 'charters')
