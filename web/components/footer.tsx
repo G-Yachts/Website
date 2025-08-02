@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from "@/public/logo/logo";
+import Logo from "@/public/logo/new/Black.png";
 import SocialLinks from "@/components/nav/socialLinks";
 import { Link } from "@/navigation";
 import { useTranslations } from "next-intl";

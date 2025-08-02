@@ -2,7 +2,7 @@ import { useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter, Link, pathnames } from "@/navigation";
 import { useParams } from "next/navigation";
-import Logo from "@/public/logo/logo";
+import Logo from "@/public/logo/new/Black.png";
 import { motion } from "framer-motion";
 import SocialLinks from "@/components/nav/socialLinks";
 import ContactLinks from "@/components/nav/contactLinks";

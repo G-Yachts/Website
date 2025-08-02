@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from "@/public/logo/logo";
+import Logo from "@/public/logo/new/Black.png";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useViewContext } from "@/context/view";
