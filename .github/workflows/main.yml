@@ -32,7 +32,6 @@ jobs:
           tags: ghcr.io/g-yachts/g-yachts-web:${{github.sha}}
           secrets: |
             "PAYLOAD_API_KEY=${{secrets.PAYLOAD_API_KEY}}"
-        continue-on-error: true
 
       - name: Build and push Admin
         uses: docker/build-push-action@v5.3.0
@@ -41,7 +40,6 @@ jobs:
           file: ./admin/Dockerfile
           push: true
           tags: ghcr.io/g-yachts/g-yachts-admin:${{github.sha}}
-        continue-on-error: true
 
   Deploy:
     runs-on: ubuntu-latest
