@@ -167,7 +167,7 @@ const ArticleCard = ({ article, locale }: { article: IArticle; locale: string })
                 width={article.image.sizes.fhd.width}
                 height={article.image.sizes.fhd.height}
                 alt={article.image.alt}
-                className={"w-full h-[56vh] object-cover object-center"}
+                className={"w-full h-[32vh] object-cover object-center"}
             />
             <div className={"flex flex-col justify-start items-start gap-[1vh]"}>
                 <p className={"uppercase"}>{article.category.title}</p>
